@@ -1,0 +1,17 @@
+<div class="bg"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let post of listPost; let i = index;">
+      <div class="card" (click)="detail(post)">
+        <div class="card-body">
+          <div class="card-title">
+            <h3 class="f-16">{{post['title']}}</h3>
+          </div>
+          <div class="card-text">
+            <p>{{post['body']}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

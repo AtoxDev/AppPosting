@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let user of listUsers; let i = index;">
+      <div class="card" (click)="detail(user)">
+        <div class="card-body">
+          <div class="card-title">
+            <h3 class="f-16">{{user['name']}}</h3>
+            <p>{{user['email']}}</p>
+          </div>
+          <div class="card-text">
+            <p>{{user['body']}}</p>
+          </div>
+          <div class="card-icon">
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
