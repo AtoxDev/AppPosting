@@ -1,7 +1,57 @@
+<div [ngClass]="capa" (click)="close()"></div>
+
+<div class="modal-error" [ngClass]="errorClass">
+  <div class="modal-title"><h3 class="f-18">{{error.title}}</h3></div>
+  <div class="modal-body"><p class="f-14">{{error.message}}</p></div>
+  <div class="modal-buttons"><button class="btn btn-primary" type="button">{{error.btn}}</button></div>
+</div>
+
+<div class="modal-details" [ngClass]="animationDetails">
+  <div class="close" (click)="close()"><i class="fas fa-times"></i></div>
+  <div class="info-personal">
+    <div class="detail-title"><h3 class="f-18">Info Personal</h3></div>
+    <div class="detail-body">
+      <div class="detail-info">
+        <div class="avatar"></div>
+        <div class="detail-data">
+          <p><strong>Nombre:</strong> {{user.name}}</p>
+          <p><strong>Username:</strong> {{user.username}}</p>
+          <p><strong>Email:</strong> {{user.email}}</p>
+          <p><strong>Móvil:</strong> {{user.phone}}</p>
+        </div>
+      </div>
+      <div class="detail-map">
+        <div class="map"></div>
+        <div class="street">
+          <p>{{user.street}}, {{user.suite}}, {{user.city}}, {{user.zipcode}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-company mt-2 mb-2">
+    <div class="detail-title-company mb-3"><h3 class="f-18">Info Compañia</h3></div>
+    <div class="detail-info d-flex">
+      <div class="detail-data w-50">
+        <p><strong>Website:</strong> {{user.website}}</p>
+        <p><strong>Name Company:</strong> {{user.company}}</p>
+      </div>
+      <button class="btn btn-primary btn-style" type="button" (click)="redirectTo(user.id)">Ver mis posts</button>
+      <button class="btn btn-outline-success btn-style" type="button" (click)="create(user.id)">Crear nuevo Post</button>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
+    <div class="col-lg-12 filter">
+      <div class="col-md-4 rigth">
+        <div class="input-group">
+          <input type="text" placeholder="Filtrar por usuario"  class="form-control" [(ngModel)]="buscarThings" name="buscarThings" (keyup)="getFind($event)">
+        </div>
+      </div>
+    </div>
     <div class="col-lg-4" *ngFor="let user of listUsers; let i = index;">
-      <div class="card" (click)="detail(user)">
+      <div class="card h-90" (click)="detail(user)">
         <div class="card-body">
           <div class="card-title">
             <h3 class="f-16">{{user['name']}}</h3>

@@ -1,1 +1,36 @@
-<p>create works!</p>
+<div [ngClass]="capa" (click)="close()"></div>
+
+<div class="modal-error" [ngClass]="errorClass">
+  <div class="modal-title"><h3 class="f-18">{{error.title}}</h3></div>
+  <div class="modal-body"><p class="f-14">{{error.message}}</p></div>
+  <div class="modal-buttons"><button class="btn btn-primary" type="button" (click)="ok()">{{error.btn}}</button></div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mt-2 mb-3">
+      <button class="btn btn-outline-success rigth mr-5" type="button" (click)="back()">Volver</button>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div class="col-lg-12 d-flex justify-content-center mt-5">
+    <div class="col-lg-6">
+      <h3 class="f-18">Creando un Post</h3>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <input type="text" class="form-control" placeholder="Escribe titulo de post" [(ngModel)]="postCreate.title" name="title">
+          </div>
+          <div class="card-text">
+            <textarea type="text" class="form-control"  placeholder="Escribe descripción de post"  [(ngModel)]="postCreate.body" name="body"></textarea>
+          </div>
+          <div class="card-button mt-3">
+            <button class="btn btn-outline-success" type="button" (click)="savePost(postCreate)">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
