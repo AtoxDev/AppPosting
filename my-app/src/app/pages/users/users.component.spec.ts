@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { UsersComponent } from './users.component';
 
-describe('UsersComponent', () => {
+describe('Realizando Test Unit del UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
 
@@ -14,12 +13,11 @@ describe('UsersComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsersComponent);
+    fixture = TestBed.createComponent(UsersComponent); //creación del componente
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
 });

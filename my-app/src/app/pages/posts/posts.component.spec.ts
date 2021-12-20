@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { PostsComponent } from './posts.component';
 
@@ -6,9 +9,30 @@ describe('PostsComponent', () => {
   let component: PostsComponent;
   let fixture: ComponentFixture<PostsComponent>;
 
+  class ActivatedRouteMock {
+    queryParams = new Observable(observer => {
+       const urlParams = {
+          param1: 'some',
+          param2: 'params'
+       }
+       observer.next(urlParams);
+       observer.complete();
+    });
+ }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostsComponent ]
+      declarations: [ PostsComponent ],
+      imports: [
+        HttpClientModule
+      ],
+      providers: [
+        { provide: Router, useValue: 'value' },
+        {
+          provide: ActivatedRoute,
+          useClass: ActivatedRouteMock
+        }
+      ],
     })
     .compileComponents();
   });
@@ -19,7 +43,7 @@ describe('PostsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Creando Test en postComponent', () => {
     expect(component).toBeTruthy();
   });
 });
